@@ -20,6 +20,17 @@ body {
   width: 100vw;
 }
 
+#load-model {
+  padding: 1rem;
+}
+
+#load-model input{
+  z-index: 1;
+  position: absolute;
+  margin-left: 10px;
+  width: 75px;
+}
+
 .row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
