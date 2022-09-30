@@ -1,9 +1,20 @@
 import { IfcAPI, IFCSPACE } from 'web-ifc/web-ifc-api'
-const ifcFileLocation = '../models/PruebaParametrosBTZ.ifc'
+const ifcFileLocation = '../models/rac_advanced_sample_project.ifc'
 const ifcapi = new IfcAPI()
-let modelID = 0
 
 ifcapi.SetWasmPath('src/wasm/')
+
+async function bootMyApp () {
+  await ifcapi.Init()
+  const ifcData = await getIfcFile(ifcFileLocation)
+
+  const modelID = ifcapi.OpenModel(ifcData)
+  ifcapi.IsModelOpen(modelID)
+
+  getAllSpaces(modelID)
+
+  ifcapi.CloseModel(modelID)
+}
 
 async function getIfcFile (url) {
   const response = await fetch(url)
@@ -19,6 +30,7 @@ async function getIfcFile (url) {
 function getAllSpaces (modelID) {
   // Get all the propertyset lines in the IFC file
   const lines = ifcapi.GetLineIDsWithType(modelID, IFCSPACE)
+
   const lineSize = lines.size()
   const spaces = []
 
@@ -31,22 +43,6 @@ function getAllSpaces (modelID) {
   }
 
   return spaces
-}
-
-async function bootMyApp () {
-  await ifcapi.Init()
-  const ifcData = await getIfcFile(ifcFileLocation)
-
-  modelID = ifcapi.OpenModel(ifcData)
-  const isModelOpened = ifcapi.IsModelOpen(modelID)
-
-  console.log({ isModelOpened })
-
-  const spaces = getAllSpaces(modelID)
-
-  console.log({ spaces })
-
-  ifcapi.CloseModel(modelID)
 }
 
 bootMyApp()
