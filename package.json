@@ -1,0 +1,36 @@
+{
+  "name": "ifc-loader",
+  "version": "0.1.0",
+  "description": "Load a ifc file, sort some data and then store them",
+  "main": "app.js",
+  "scripts": {
+    "build": "rollup -c ./rollup.config.js",
+    "watch": "rollup -w -c ./rollup.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agustinlozano/ifc-loader.git"
+  },
+  "keywords": [
+    "ifc",
+    "ifc.js"
+  ],
+  "author": "Bimtrazer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agustinlozano/ifc-loader/issues"
+  },
+  "homepage": "https://github.com/agustinlozano/ifc-loader#readme",
+  "devDependencies": {
+    "@open-wc/building-rollup": "^2.0.2",
+    "@rollup/plugin-node-resolve": "^14.1.0",
+    "rollup": "^2.79.1",
+    "standard": "17.0.0"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/standard/eslintrc.json"
+  },
+  "dependencies": {
+    "web-ifc": "0.0.36"
+  }
+}
