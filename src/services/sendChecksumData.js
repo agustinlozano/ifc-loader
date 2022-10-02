@@ -18,4 +18,4 @@ async function sendChecksumData (ifcModel) {
   return res
 }
 
-export default postIfcChecksum
+export default sendChecksumData
