@@ -1,50 +1,36 @@
 import ifcApi from '../config/initIfcApi.js'
-import { OpenIfc } from './utils.js'
+import { validateAnArray } from '../utils/validate.js'
+import { getAllGuids, LoadFile } from './utils.js'
+
+/* eslint-env browser */
 
 const loadModel = (changed) => {
-  // eslint-disable-next-line no-undef
   const reader = new FileReader()
 
-  reader.onload = () => LoadFile(reader.result)
-  reader.readAsText(changed.target.files[0])
+  const file = changed.target.files[0]
+
+  reader.readAsText(file)
+  const modelData = { file }
+
+  reader.onload = () => handlerOnload(reader, modelData)
 }
 
-async function LoadFile (ifcAsText) {
-  const uint8array = new TextEncoder().encode(ifcAsText)
-  const modelID = await OpenIfc(uint8array)
+async function handlerOnload (reader, modelData) {
+  const modelId = await LoadFile(reader.result)
+
+  ifcApi.CreateIfcGuidToExpressIdMapping(modelId)
+
   const map = ifcApi.ifcGuidMap
-
-  console.log(map)
-
-  ifcApi.CreateIfcGuidToExpressIdMapping(modelID)
-
-  console.log(map)
-
   const guids = getAllGuids(map)
 
-  if (guids.length === 0) {
-    console.error('No GUIDs found')
-  }
+  validateAnArray(guids, 'No GUIDs found.')
 
-  console.log(guids)
+  modelData = { ...modelData, modelId, guids }
 
-  return modelID
-}
-
-function getAllGuids (map) {
-  const values = map.values()
-  const guids = []
-
-  for (const value of values) {
-    for (const item of value) {
-      const guid = item
-
-      console.log(guid)
-      // guids.push(guid)
-    }
-  }
-
-  return guids
+  // En este punto del tiempo tengo toda la infomraciuon necesaria
+  // para poder hacer el sendChecksumData
+  console.log(modelData)
+  // sendChecksumData(modelData)
 }
 
 export default loadModel
