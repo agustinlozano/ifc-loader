@@ -1,4 +1,3 @@
-// Send IFC model to server and get checksum
 const BASE_URL = 'http://projects.bimtrazer.com/api/'
 
 async function sendChecksumData (ifcModel) {
