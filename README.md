@@ -17,44 +17,26 @@ Bimtrazer.
 - [Vite - Vitest](https://vitest.dev/)
 - SCSS
 
-### Arbol de directorios
-📦src
-
- ┣ 📂assets
-
- ┣ 📂config
-
- ┃ ┗ 📜initIfcApi.js
-
- ┣ 📂loader
-
- ┃ ┣ 📜index.js
-
- ┃ ┗ 📜utils.js
-
- ┣ 📂services
-
- ┃ ┗ 📜sendChecksumData.js
- 
- ┣ 📂styles
- 
- ┣ 📂test
- 
- ┣ 📂types
- 
- ┃ ┗ 📜geometryTypes.js
- 
- ┣ 📂utils
- 
- ┃ ┗ 📜validate.js
- 
- ┣ 📂wasm
- 
- ┃ ┣ 📜web-ifc-mt.wasm
- 
- ┃ ┗ 📜web-ifc.wasm
- 
- ┗ 📜app.js
+### Arbol de directorios de la carpeta *source*
+📦src <br/>
+ ┣ 📂assets <br/>
+ ┣ 📂config <br/>
+ ┃ ┗ 📜initIfcApi.js <br/>
+ ┣ 📂loader <br/>
+ ┃ ┣ 📜index.js <br/>
+ ┃ ┗ 📜utils.js <br/>
+ ┣ 📂services <br/>
+ ┃ ┗ 📜sendChecksumData.js <br/>
+ ┣ 📂styles <br/>
+ ┣ 📂test <br/>
+ ┣ 📂types <br/>
+ ┃ ┗ 📜geometryTypes.js <br/>
+ ┣ 📂utils <br/>
+ ┃ ┗ 📜validate.js <br/>
+ ┣ 📂wasm <br/>
+ ┃ ┣ 📜web-ifc-mt.wasm <br/>
+ ┃ ┗ 📜web-ifc.wasm <br/>
+ ┗ 📜app.js <br/>
  
 
 ### Funciones
