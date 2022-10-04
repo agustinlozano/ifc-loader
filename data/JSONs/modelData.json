@@ -1,12 +1,5 @@
 {
-  "file": {
-    "lastModified": 1661795719704,
-    "name": "onlyTwoWalls.ifc",
-    "size": 11847,
-    "type": "application/p21",
-    "webkitRelativePath": ""
-  },
-  "modelId": 0,
+  "name": "A012AE2105C88B07DC2F9CB1A0CE17A2748F9815-0000-0000",
   "guids": [
     {
       "ExpressId": 129,
@@ -48,5 +41,6 @@
       "ExpressId": 269,
       "Guid": "0mB4596fj6vh$yLe7Vluag"
     }
-  ]
+  ],
+  "IfcContnet": ""
 }
