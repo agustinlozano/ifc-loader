@@ -5,15 +5,13 @@ const BASE_URL = 'http://projects.bimtrazer.com/api/'
 async function sendChecksumData (data) {
   const modelData = new FormData()
 
-  modelData.append('Guids', data.guids)
-  modelData.append('File', data.file)
+  modelData.append('Name', data.Name)
+  modelData.append('Guids', data.Guids)
+  modelData.append('IfcContent', data.IfcContent)
 
   const URL = BASE_URL + 'checksum'
   const options = {
     method: 'POST',
-    headers: {
-      'Content-Type': 'text/plain'
-    },
     body: modelData
   }
 
