@@ -1,21 +1,21 @@
 import ifcApi from '../config/initIfcApi.js'
 import { validateAnArray } from '../utils/validate.js'
 import { getAllGuids, LoadFile } from './utils.js'
+import generateName from './generateName.js'
+import sendChecksumData from '../services/sendChecksumData.js'
 
 /* eslint-env browser */
 
 const loadModel = (changed) => {
   const reader = new FileReader()
-
   const file = changed.target.files[0]
 
   reader.readAsText(file)
-  const modelData = { file }
 
-  reader.onload = () => handlerOnload(reader, modelData)
+  reader.onload = () => handlerOnload(reader, file)
 }
 
-async function handlerOnload (reader, modelData) {
+async function handlerOnload (reader, file) {
   const modelId = await LoadFile(reader.result)
 
   ifcApi.CreateIfcGuidToExpressIdMapping(modelId)
@@ -25,7 +25,13 @@ async function handlerOnload (reader, modelData) {
 
   validateAnArray(guids, 'No GUIDs found.')
 
-  modelData = { ...modelData, modelId, guids }
+  const name = await generateName(file.name)
+
+  const modelData = {
+    Name: name,
+    Guids: guids,
+    IfcContent: reader.result
+  }
 
   // En este punto del tiempo tengo toda la infomraciuon necesaria
   // para poder hacer el sendChecksumData
