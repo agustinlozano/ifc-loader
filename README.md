@@ -19,24 +19,43 @@ Bimtrazer.
 
 ### Arbol de directorios
 📦src
+
  ┣ 📂assets
+
  ┣ 📂config
+
  ┃ ┗ 📜initIfcApi.js
+
  ┣ 📂loader
+
  ┃ ┣ 📜index.js
+
  ┃ ┗ 📜utils.js
+
  ┣ 📂services
+
  ┃ ┗ 📜sendChecksumData.js
+ 
  ┣ 📂styles
+ 
  ┣ 📂test
+ 
  ┣ 📂types
+ 
  ┃ ┗ 📜geometryTypes.js
+ 
  ┣ 📂utils
+ 
  ┃ ┗ 📜validate.js
+ 
  ┣ 📂wasm
+ 
  ┃ ┣ 📜web-ifc-mt.wasm
+ 
  ┃ ┗ 📜web-ifc.wasm
+ 
  ┗ 📜app.js
+ 
 
 ### Funciones
 ```JS
